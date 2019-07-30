@@ -1,8 +1,10 @@
 require('dotenv').config()
 const { DATABASE_URL } = process.env
 
-import { defaults } from 'pg'
-defaults.ssl = false
+const pg = require('pg')
+pg.defaults.ssl = false
 
-export const client = 'pg'
-export const connection = DATABASE_URL
+module.exports = {
+	client: 'pg',
+	connection: DATABASE_URL,
+}
