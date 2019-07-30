@@ -1,4 +1,4 @@
-# myfewbucks-frontend
+# myfewbucks-backend
 
 ### My goals:
 Develop a personal finance application, to practice my project manegement, UI prototyping, front-end and back-end development skills.
