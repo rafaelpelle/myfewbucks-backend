@@ -1,3 +1,10 @@
+# WebStorm IDE Settings
+/.idea
+
+# Bundle build files
+/dist
+/.dist
+
 # Logs
 logs
 *.log
