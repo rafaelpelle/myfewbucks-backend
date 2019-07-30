@@ -1,8 +1,7 @@
-exports.seed = function(knex, Promise) {
-	// Deletes ALL existing entries
-	return knex('users').del()
+exports.seed = async function(knex) {
+	return knex('users')
+		.del()
 		.then(function() {
-			// Inserts seed entries
 			return knex('users').insert([
 				{
 					cpf: '08194709962',

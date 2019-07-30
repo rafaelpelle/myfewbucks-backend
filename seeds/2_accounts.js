@@ -1,8 +1,7 @@
-exports.seed = function(knex, Promise) {
-	// Deletes ALL existing entries
-	return knex('accounts').del()
+exports.seed = async function(knex) {
+	return knex('accounts')
+		.del()
 		.then(function() {
-			// Inserts seed entries
 			return knex('accounts').insert([
 				{
 					user_id: '1',
