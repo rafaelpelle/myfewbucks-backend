@@ -2,10 +2,10 @@ exports.up = async function(knex) {
 	return knex.schema.createTable('users', (table) => {
 		table.increments('id').primary()
 		table.string('cpf').unique()
-		table.string('name')
-		table.string('email')
-		table.string('gender')
-		table.date('birth_date')
+		table.string('name').notNull()
+		table.string('email').notNull()
+		table.string('gender').notNull()
+		table.date('birth_date').notNull()
 	})
 }
 
