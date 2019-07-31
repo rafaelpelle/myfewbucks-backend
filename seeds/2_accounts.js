@@ -5,7 +5,23 @@ exports.seed = async function(knex) {
 			return knex('accounts').insert([
 				{
 					user_id: '1',
-					type: 'Credit Card',
+					type: 'CreditCard',
+					currency: 'BRL',
+					description: 'Nubank',
+					initial_value: 0,
+					current_value: 0,
+				},
+				{
+					user_id: '1',
+					type: 'BankAccount',
+					currency: 'BRL',
+					description: 'Nuconta',
+					initial_value: 0,
+					current_value: 0,
+				},
+				{
+					user_id: '2',
+					type: 'CreditCard',
 					currency: 'BRL',
 					description: 'Nubank',
 					initial_value: 0,
@@ -13,9 +29,9 @@ exports.seed = async function(knex) {
 				},
 				{
 					user_id: '2',
-					type: 'Bank Account',
+					type: 'Wallet',
 					currency: 'BRL',
-					description: 'Nuconta',
+					description: 'Minha Carteira',
 					initial_value: 0,
 					current_value: 0,
 				},
