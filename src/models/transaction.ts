@@ -1,10 +1,10 @@
 const { Model } = require('objection')
 import { User } from './user'
-import { Transaction } from './transaction'
+import { Account } from './account'
 
-export class Account extends Model {
+export class Transaction extends Model {
 	static get tableName() {
-		return 'accounts'
+		return 'transactions'
 	}
 
 	static get relationMappings() {
@@ -13,16 +13,16 @@ export class Account extends Model {
 				relation: Model.BelongsToOneRelation,
 				modelClass: User,
 				join: {
-					from: 'accounts.user_id',
+					from: 'transactions.user_id',
 					to: 'users.id',
 				},
 			},
-			transactions: {
-				relation: Model.HasManyRelation,
-				modelClass: Transaction,
+			accounts: {
+				relation: Model.BelongsToOneRelation,
+				modelClass: Account,
 				join: {
-					from: 'accounts.id',
-					to: 'transactions.account_id',
+					from: 'transactions.account_id',
+					to: 'accounts.id',
 				},
 			},
 		}
