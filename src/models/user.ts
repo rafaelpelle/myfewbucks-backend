@@ -2,6 +2,7 @@ const { Model } = require('objection')
 import { Account } from './account'
 import { Transaction } from './transaction'
 import { Budget } from './budget'
+import { Reminder } from './reminder'
 
 export class User extends Model {
 	static get tableName() {
@@ -32,6 +33,14 @@ export class User extends Model {
 				join: {
 					from: 'users.id',
 					to: 'budgets.user_id',
+				},
+			},
+			reminders: {
+				relation: Model.HasManyRelation,
+				modelClass: Reminder,
+				join: {
+					from: 'users.id',
+					to: 'reminders.user_id',
 				},
 			},
 		}
