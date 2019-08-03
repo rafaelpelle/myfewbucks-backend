@@ -11,4 +11,4 @@ const { Model } = require('objection')
 const knexConnection = Knex(connection)
 Model.knex(knexConnection)
 
-module.exports = { Account, Budget, Reminder, Transaction, User }
+export { Account, Budget, Reminder, Transaction, User }

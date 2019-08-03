@@ -1,5 +1,5 @@
 import { validateUserParams } from '../../middleware/validators'
-import { getUserByCPF, getAllUsers } from './controllers'
+import { getUserByCPF, getAllUsers, getAllUserAccounts } from './controllers'
 
 export default [
 	{
@@ -11,5 +11,10 @@ export default [
 		path: '/user',
 		method: 'get',
 		handler: [validateUserParams, getUserByCPF],
+	},
+	{
+		path: '/user/account',
+		method: 'get',
+		handler: [validateUserParams, getAllUserAccounts],
 	},
 ]
