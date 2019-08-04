@@ -4,6 +4,7 @@ exports.up = async function(knex) {
 		table.string('cpf').unique()
 		table.string('name').notNull()
 		table.string('email').notNull()
+		// table.string('password').notNull()
 		table.string('gender').notNull()
 		table.date('birth_date').notNull()
 	})
