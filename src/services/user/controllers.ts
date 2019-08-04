@@ -29,7 +29,8 @@ export const getAllUserAccounts = async (req: Request, res: Response, next: Next
 		.first()
 	const accounts = await Account.query()
 		.select('*')
-		.where('user_id', id + 'sfud')
+		.where('user_id', id)
+
 	res.status(200).send({
 		ok: true,
 		accounts,
