@@ -4,7 +4,7 @@ import { handleAPIDocs } from './apiDocs'
 
 export default [
 	handleCors,
-	handleBodyRequestParsing,
+	// handleBodyRequestParsing,
 	handleCompression,
 	handle404Error,
 	handleClientError,

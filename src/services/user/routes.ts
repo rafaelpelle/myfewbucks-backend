@@ -1,20 +1,15 @@
-import { validateUserParams } from '../../middleware/validators'
-import { getUserByCPF, getAllUsers, getAllUserAccounts } from './controllers'
+import { validateGetUserParams, validateRegistrationParams } from '../../middleware/validators'
+import { handleGetUser, handleUserRegistration } from './controllers'
 
 export default [
 	{
-		path: '/allUsers',
+		path: '/user',
 		method: 'get',
-		handler: [getAllUsers],
+		handler: [validateGetUserParams, handleGetUser],
 	},
 	{
 		path: '/user',
-		method: 'get',
-		handler: [validateUserParams, getUserByCPF],
-	},
-	{
-		path: '/user/account',
-		method: 'get',
-		handler: [validateUserParams, getAllUserAccounts],
+		method: 'post',
+		handler: [validateRegistrationParams, handleUserRegistration],
 	},
 ]

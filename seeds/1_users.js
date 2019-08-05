@@ -4,18 +4,16 @@ exports.seed = async function(knex) {
 		.then(function() {
 			return knex('users').insert([
 				{
-					cpf: '08194709962',
 					name: 'Rafael Pelle',
 					email: 'rafapelle@gmail.com',
-					// password: '12345678',
+					password: '12345678',
 					gender: 'male',
 					birth_date: '1992-10-23',
 				},
 				{
-					cpf: '62206664968',
 					name: 'Ana Maria Serafim',
 					email: 'anamaria.serafim@gmail.com',
-					// password: '12345678',
+					password: '12345678',
 					gender: 'female',
 					birth_date: '1969-11-19',
 				},
