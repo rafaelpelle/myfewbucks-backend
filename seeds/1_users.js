@@ -8,14 +8,14 @@ exports.seed = async function(knex) {
 					email: 'rafapelle@gmail.com',
 					password: '12345678',
 					gender: 'male',
-					birth_date: '1992-10-23',
+					birthDate: '1992-10-23',
 				},
 				{
 					name: 'Ana Maria Serafim',
 					email: 'anamaria.serafim@gmail.com',
 					password: '12345678',
 					gender: 'female',
-					birth_date: '1969-11-19',
+					birthDate: '1969-11-19',
 				},
 			])
 		})

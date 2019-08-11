@@ -33,9 +33,9 @@ CREATE TYPE "category_type" AS ENUM (
 
 CREATE TABLE "users" (
   "id" int PRIMARY KEY,
-  "cpf" varchar UNIQUE NOT NULL,
-  "email" varchar UNIQUE NOT NULL,
   "name" varchar NOT NULL,
+  "email" varchar UNIQUE NOT NULL,
+  "password" varchar NOT NULL,
   "gender" "gender_type" NOT NULL,
   "birth_date" date NOT NULL
 );

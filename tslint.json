@@ -11,7 +11,7 @@
 		"semicolon": [true, "never"],
 		"forin": false,
 		"max-line-length": {
-			"options": [100]
+			"options": [120]
 		},
 		"object-literal-sort-keys": false,
 		"no-submodule-imports": false,
@@ -26,11 +26,11 @@
 		"variable-name": false,
 		"no-var-requires": false,
 		"indent": [true, "tabs", 4],
-		"interface-name": [true, "always-prefix"]
+		"interface-name": false
 	},
 	"jsRules": {
 		"max-line-length": {
-			"options": [100]
+			"options": [120]
 		}
 	},
 	"linterOptions": {

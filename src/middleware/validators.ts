@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
+import { User } from '../models/schema'
 import { HTTP400Error } from '../utils/httpErrors'
+import { RequiredRegistrationParams, RegistrationValidators } from '../utils/interfaces'
 import {
 	validateCPF,
 	validateName,
@@ -19,31 +21,36 @@ export const validateGetUserParams = (req: Request, res: Response, next: NextFun
 	}
 }
 
-export const validateRegistrationParams = (req: Request, res: Response, next: NextFunction) => {
-	const requiredParams: any = {
+export const validateRegistrationParams = async (req: Request, res: Response, next: NextFunction) => {
+	const requiredParams: RequiredRegistrationParams = {
 		name: req.body.name,
 		email: req.body.email,
 		password: req.body.password,
 		birthDate: req.body.birthDate,
 		gender: req.body.gender,
 	}
-	for (const param in requiredParams) {
-		if (!requiredParams[param]) {
-			throw new HTTP400Error(`Missing parameter: ${param}.`)
-		}
-		switch (param) {
-			case 'name':
-				if (!validateName(requiredParams.name)) {
-					throw new HTTP400Error('Invalid "name" parameter.')
-				}
-		}
+	const valueValidators: RegistrationValidators = {
+		name: validateName,
+		email: validateEmail,
+		password: validatePassword,
+		birthDate: validateBirthDate,
+		gender: validateGender,
 	}
 
-	const nameIsValid = validateName(requiredParams.name)
-	const emailIsValid = validateEmail(requiredParams.name)
-	const passwordIsValid = validatePassword(requiredParams.password)
-	const birthDateIsValid = validateBirthDate(requiredParams.birthDate)
-	const genderIsValid = validateGender(requiredParams.gender)
+	Object.keys(requiredParams).forEach((key: string) => {
+		const value = requiredParams[key]
+		if (!value) {
+			throw new HTTP400Error(`Missing parameter: ${key}.`)
+		}
+		if (!valueValidators[key](value)) {
+			throw new HTTP400Error(`Invalid parameter: ${key}.`)
+		}
+	})
+
+	const alreadyRegistered = await User.query().where('email', requiredParams.email)
+	if (alreadyRegistered) {
+		throw new HTTP400Error('E-mail already registered.')
+	}
 
 	next()
 }
